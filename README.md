@@ -5,8 +5,10 @@ Here I am developing code to summarise goProfiler output using Jaccard similarit
 
 ## Usage
 
-*Run gprofiler*
-Rscript run_gprofiler.R test.list test.out hsapiens
+**Run gprofiler**
 
-*Cluster using all terms types*
-python3  funjacc.py -g test.out -d GO:BP,GO:MF,GO:CC,CORUM,KEGG,REAC,WP,TF
+`Rscript run_gprofiler.R test.list test.out hsapiens`
+
+**Cluster using all terms types**
+
+`python3  funjacc.py -g test.out -d GO:BP,GO:MF,GO:CC,CORUM,KEGG,REAC,WP,TF`
