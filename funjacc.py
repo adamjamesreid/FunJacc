@@ -4,13 +4,14 @@
 # To do
 ## Include term type in annotation output - tick!
 ## Generate more annotation for use in Cytoscpae network - tick!
-## Test GOMCL package - would this work OK?
-## Pick a name for tool
-## Set up GitHub
-## Add unclustered orphan terms back in at the end
+## Test GOMCL package - would this work OK? - not user friendly enough
+## Pick a name for tool - FunJacc!
+## Set up GitHub - tick!
+## Add unclustered orphan terms back in at the end - tick!
 ## Generate the network image with clear cluster numbers/names
 ## Run gProfiler itself??? gene list -> clustered terms
 ## Implement mamba environment to capture dependencies
+## Excel output?
 
 import sys
 import subprocess
@@ -25,7 +26,7 @@ inflation = 2
 default_node_label_size = 5
 cluster_label_size = 20
 
-#colours = ["#440154FF", "#46085CFF", "#471064FF" ,"#48176AFF", "#481F70FF", "#482576FF", "#472C7AFF", "#46337EFF", "#443983FF" ,"#423F85FF", "#404588FF","#3E4A89FF", "#3C508BFF", "#39568CFF", "#365C8DFF" ,"#34618DFF" ,"#31668EFF", "#2F6B8EFF", "#2D718EFF", "#2B758EFF", "#297A8EFF" ,"#277F8EFF","#25848EFF", "#23898EFF", "#218E8DFF", "#20928CFF", "#1F978BFF", "#1E9D89FF","#1FA187FF","#21A685FF","#25AB82FF","#29AF7FFF","#30B57CFF", "#38B977FF", "#40BD72FF","#4AC16DFF","#55C568FF","#5FCA61FF","#6BCD5AFF","#77D153FF","#84D44BFF","#91D742FF","#9FDA3AFF","#ACDC30FF","#BADE28FF", "#C8E020FF" ,"#D6E21AFF", "#E4E419FF", "#F1E51DFF", "#FDE725FF"]
+# Colour for annotating clusters
 colours = ['#FFC312','#C4E538','#12CBC4','#FDA7DF','#ED4C67',
   '#F79F1F','#A3CB38','#1289A7','#D980FA','#B53471',
   '#EE5A24','#009432','#0652DD','#9980FA','#833471',
@@ -34,7 +35,7 @@ colours = ['#FFC312','#C4E538','#12CBC4','#FDA7DF','#ED4C67',
   '#2c2c54','#474787','#aaa69d','#227093','#218c74',
   '#ff5252','#ff793f','#d1ccc0','#ffb142','#ffda79',
   '#b33939','#cd6133','#84817a','#cc8e35','#ccae62']
-default_colour = '#FDE725FF' # For overflow
+default_colour = '#FDE725FF' # For if we run out of colours
 
 # Argument parser
 parser = argparse.ArgumentParser(description="go_term_sim_network v1.1 - Cluster gProfiler GO term results based on associated genes, Adam Reid (ajr236@cam.ac.uk)")
@@ -70,7 +71,7 @@ term_names = dict()
 gene_names = dict()
 term_types = dict() # Store term type for each term
 
-# Read through results and store genes assopciated with each significant term
+# Read through results and store genes associated with each significant term
 with open(data) as d:
     for x in d.readlines():
         x = x.rstrip()
@@ -98,6 +99,11 @@ with open(data) as d:
 # Open output file for writing the network
 network_outfile = outstem+'.ntwrk.txt'
 ntwrk_out = open(network_outfile, 'w')
+# Nectwork file header
+ntwrk_out.write("source\ttarget\tjaccard_coeff\n")
+
+# Record which terms which are connected so we can add in those which aren't
+connected_terms = set()
 
 for g1 in gene_names:
     for g2 in gene_names:
@@ -109,7 +115,18 @@ for g1 in gene_names:
             #print("{}\t{}\t{}".format(term_names[g1], term_names[g2], j))
             ntwrk_out.write("{}\t{}\t{}\n".format(term_names[g1], term_names[g2], j))
 
+            connected_terms.add(g1)
+            connected_terms.add(g2)
+
+
+#Add in unconnected but significant terms
+for g in gene_names:
+    if g not in connected_terms:
+        ntwrk_out.write("{}\t{}\t{}\n".format(term_names[g], term_names[g], 1))
+
 ntwrk_out.close()
+
+
 
 # then run MCL pipeline
 clusters_outfile_name = network_outfile+'data.mci.inf'+str(inflation)+'.clusters.txt'
@@ -134,6 +151,10 @@ with open(clusters_outfile_name) as df:
         x = x.rstrip()
         v = x.split('\t')
 
+        # Skip header
+        if v[0] == "source":
+            continue
+
         ann_out.write('term\tcluster_number\tcluster_name\tterm_type\tcolour\tlabel_size\n')
 
         for term in v:
@@ -154,7 +175,26 @@ with open(clusters_outfile_name) as df:
 
         c += 1
 
+# Add in terms which had no cluster designation (orphans)
+for t in gene_names:
+    tname = term_names[t]
+    print(tname)
+    # If this term does not have a cluster?
+    if tname not in term_to_cluster:
+        # Add it to the cluster dict
+        term_to_cluster[tname] = list()
+        term_to_cluster[tname] = [c, tname]
+        #Pick a colour
+        cluster_colour = default_colour
+        if c < len(colours):
+            cluster_colour = colours[c]
+        # Add orphan cluster information to the cluster annotation file
+        ann_out.write('{}\t{}\t{}\t{}\t{}\t{}\n'.format(tname, c, tname, ','.join([x for x in term_types[tname]]), cluster_colour, cluster_label_size))
+        # increment cluster counter
+        c += 1
+
 ann_out.close()
+
 
 # Write out gProfiler results, with cluster included
 gprof_outfile = outstem+'.gprofiler.tsv'
@@ -181,7 +221,7 @@ with open(data) as d:
 
 gprof_out.close()
 
-# Outputs: network file, cluster annotations (with cluster colours?)
+# Outputs: network file, cluster annotations
 print("Output files:\n  Network: {}\n  Clusters: {}\n  Annotation: {}\n gProfiler extended output: {}\n".format(network_outfile, clusters_outfile_name, ann_outfile, gprof_outfile))
 
 
