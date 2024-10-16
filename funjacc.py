@@ -142,6 +142,7 @@ c = 1
 ann_outfile = outstem+'.ann.txt'
 ann_out = open(ann_outfile, 'w')
 print('{}\t{}\t{}'.format("node", "cluster", "cluster_name"))
+ann_out.write('term\tcluster_number\tcluster_name\tterm_type\tcolour\tlabel_size\n')
 
 # Save cluster details here for writing to gProfiler output
 term_to_cluster = dict()
@@ -154,8 +155,6 @@ with open(clusters_outfile_name) as df:
         # Skip header
         if v[0] == "source":
             continue
-
-        ann_out.write('term\tcluster_number\tcluster_name\tterm_type\tcolour\tlabel_size\n')
 
         for term in v:
             # Pick cluster colour
