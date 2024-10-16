@@ -12,3 +12,9 @@ Here I am developing code to summarise goProfiler output using Jaccard similarit
 **Cluster using all terms types**
 
 `python3  funjacc.py -g test.out -d GO:BP,GO:MF,GO:CC,CORUM,KEGG,REAC,WP,TF`
+
+**Visualising in Cytoscape**
+
+The Cytoscape style file allows the metadata provided by FunJacc to be used to annotate the network
+
+The *ntwk* output file describes the network, the *ann* file describes the node attributes
