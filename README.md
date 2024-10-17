@@ -12,7 +12,7 @@ Prerequisites:
 - Conda/Mamba
 - Git
 
-**Clone GIT repository**
+**Clone Git repository**
 
 `git clone https://github.com/adamjamesreid/FunJacc.git`
 
@@ -22,7 +22,11 @@ Prerequisites:
 
 `mamba env create -f funjacc.yaml -n funjacc`
 
+`mamba activate funjacc`
 
+**Execute snakemake pipeline**
+
+``
 
 
 ## Old usage
