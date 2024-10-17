@@ -44,6 +44,7 @@ parser.add_argument("-j", type=float, help="Jaccard coefficient above which to r
 parser.add_argument("-d", type=str, help="Comma-separated list of data types to include e.g. GO:BP,GO:MF,GO:CC,CORUM", default='GO:BP')
 parser.add_argument("-I", type=float, help="Inflation parameter for MCL clustering")
 parser.add_argument("-g", type=str, help="gProfiler term enrichment results")
+parser.add_argument("-o", type=str, help="Output directory", default="funjacc_res")
 args = parser.parse_args()
 
 # Assign command line arguments to variables
@@ -57,12 +58,16 @@ if(args.j):
     jaccard_cut = args.j
 if(args.I):
     inflation = args.I
+if(args.o):
+    outdir = args.o
 
 if(args.g):
     data = args.g
 
 # Get core of filename for use in making output names
 outstem = data.split('/')[-1].split('.')[0]
+# Add outdir to outstem
+outstem = outdir + '/' + outstem
 
 # Store names 
 term_names = dict()
