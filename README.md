@@ -14,9 +14,14 @@ Prerequisites:
 
 **Clone GIT repository**
 
-git clone https://github.com/adamjamesreid/FunJacc.git
+`git clone https://github.com/adamjamesreid/FunJacc.git`
 
-**setup conda environment**
+`cd FunJacc`
+
+**Setup mamba environment**
+
+`mamba env create -f funjacc.yaml -n funjacc`
+
 
 
 
