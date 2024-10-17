@@ -7,6 +7,21 @@ This is still very much under development!!!
 
 ## Usage
 
+Prerequisites:
+
+- Conda/Mamba
+- Git
+
+**Clone GIT repository**
+
+git clone https://github.com/adamjamesreid/FunJacc.git
+
+**setup conda environment**
+
+
+
+## Old usage
+
 **Run gprofiler**
 
 `Rscript run_gprofiler.R test.list test.out hsapiens`
