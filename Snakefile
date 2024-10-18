@@ -1,8 +1,10 @@
+configfile: "config.yaml"
+
 rule run_gprofiler:
     input:
-        "{name}.list",
+        "input/{name}.list",
     params:
-        species = "hsapiens",
+        species = config["organism"]
     output:
         "gprofiler/{name}.gprofiler.out"
     shell:
@@ -13,10 +15,10 @@ rule run_funjacc:
     input:
         "gprofiler/{name}.gprofiler.out"
     params:
-        function_types = "GO:BP,GO:MF,GO:CC,CORUM,KEGG,REAC,WP,TF",
-        p_cut = 0.01,
-        jacc_cut = 0.5,
-        inflation = 1.4,
+        function_types = config['function_types'],
+        p_cut = config['p_cut'],
+        jacc_cut = config['jacc_cut'],
+        inflation = config['inflation'],
         outdir = "funjacc_res"
     output:
         "funjacc_res/{name}.gprofiler.tsv",
