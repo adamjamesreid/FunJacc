@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <vizmap id="VizMap-2024_10_16-09_55" documentVersion="3.1">
-    <visualStyle name="Function Clusters">
+    <visualStyle name="FunJacc Cytoscape Style">
         <network>
             <visualProperty default="400.0" name="NETWORK_HEIGHT"/>
             <visualProperty default="false" name="NETWORK_NODE_LABEL_SELECTION"/>
