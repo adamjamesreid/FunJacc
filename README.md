@@ -38,7 +38,7 @@ To run the test data:
 
 **Options**
 
-The way the code runs can be adjusted by editing the 'conifg.yaml' config file.
+The way the code runs can be adjusted by editing the 'config.yaml' config file.
 
 `organism: hsapiens`
 The species used by gProfiler to interpret the gene list you provide e.g. hsapiens, mmusculus, dmelanogaster, 
