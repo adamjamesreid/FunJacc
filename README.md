@@ -32,6 +32,29 @@ To run snakemake you need to specify the final output file, so here we arbitrari
 
 `snakemake funjacc_res/{string}.ann.txt`
 
+To run the test data:
+
+`snakemake funjacc_res/test.ann.txt`
+
+**Options**
+
+The way the code runs can be adjusted by editing the 'conifg.yaml' config file.
+
+`organism: hsapiens`
+The species used by gProfiler to interpret the gene list you provide e.g. hsapiens, mmusculus, dmelanogaster, 
+
+`function_types: GO:BP,GO:MF,GO:CC,CORUM,KEGG,REAC,WP,TF`
+The functional resources to include in the clustering
+
+`p_cut: 0.01`
+The p-value cut off for gProfiler results to be included in clustering
+
+`jacc_cut: 0.5`
+The Jaccard index cut off for indentifying links between terms
+
+`inflation: 1.4`
+The MCL inflation parameter for determining clusters
+
 **Output**
 
 - ./gprofiler/{string}.gprofiler.out - Initial output from Gprofiler
