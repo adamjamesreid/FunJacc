@@ -26,7 +26,11 @@ Prerequisites:
 
 **Execute snakemake pipeline**
 
-``
+Your input file should be in a directory called 'input' and be named '{string}.list'. The {string} can be anything you like.
+
+To run snakemake you need to specify the final output file, so here we arbitrarily pick one of them, which will be the file of cluster annotation, found in a new directory called 'funjacc_res'. It will be named with the {string} used in your input file, so here, replace {string} with the same characters that are before '.list' in your input file
+
+`snakemake funjacc_res/{string}.ann.txt`
 
 
 ## Old usage
