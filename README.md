@@ -73,7 +73,11 @@ You can get Cytoscape from [here](https://cytoscape.org/download.html)
 
 Open Cytoscape. *File -> Import -> Network from File*: test.ntwrk.txt
 
-*File -> Import -> Table from file*: test.ann.txt (n.b. *Import Data as: Node Table Columns*)
+*File -> Import -> Table from File*: test.ann.txt (n.b. *Import Data as: Node Table Columns*)
+
+*File -> Import -> Styles from File*: funjacc_cytoscape_style.xml
+
+Then select the FunJacc Cytoscape Style under the style templates
 
 
 
@@ -87,8 +91,3 @@ Open Cytoscape. *File -> Import -> Network from File*: test.ntwrk.txt
 
 `python3  funjacc.py -g test.out -d GO:BP,GO:MF,GO:CC,CORUM,KEGG,REAC,WP,TF`
 
-**Visualising in Cytoscape**
-
-The Cytoscape style file allows the metadata provided by FunJacc to be used to annotate the network
-
-The *ntwk* output file describes the network, the *ann* file describes the node attributes
