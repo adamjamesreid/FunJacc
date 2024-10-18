@@ -69,6 +69,8 @@ The MCL inflation parameter for determining clusters
 
 The most useful output is perhaps './funjacc_res/{string}.gprofiler.tsv'. this can be opened in e.g. Excel and then the enriched terms can be sorted by cluster number. By grouping the many terms into their clusters, it becomes more clear what aspects of biology are represented by the gene list.
 
+![Excel image of FunJacc results](excel_output.png)
+
 **Visualise the clustering in Cytoscape**
 
 You can get Cytoscape from [here](https://cytoscape.org/download.html)
