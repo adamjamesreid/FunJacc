@@ -32,6 +32,17 @@ To run snakemake you need to specify the final output file, so here we arbitrari
 
 `snakemake funjacc_res/{string}.ann.txt`
 
+**Output**
+
+./gprofiler/{string}.gprofiler.out - Initial output from Gprofiler
+
+./funjacc_res/{string}.ann.txt - Cluster annotations, which can be read into Cytoscape
+./funjacc_res/{string}.gprofiler.tsv - Gprofiler output, annotated with FunJacc cluster numbers and names
+./funjacc_res/{string}.ntwrk.txt - FunJacc network file which can be read into Cytoscape
+./funjacc_res/{string}.ntwrk.txtdata.mci - MCL output file
+./funjacc_res/{string}.ntwrk.txtdata.mci.inf1.4 - MCL output file
+./funjacc_res/{string}.ntwrk.txtdata.mci.inf1.4.clusters.txt - MCL output file
+./funjacc_res/{string}.ntwrk.txt.data.tab - MCL output file
 
 ## Old usage
 
