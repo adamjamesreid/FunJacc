@@ -67,6 +67,16 @@ The MCL inflation parameter for determining clusters
 - ./funjacc_res/{string}.ntwrk.txtdata.mci.inf1.4.clusters.txt - MCL output file
 - ./funjacc_res/{string}.ntwrk.txt.data.tab - MCL output file
 
+**Visualise the clustering in Cytoscape**
+
+You can get Cytoscape from [here](https://cytoscape.org/download.html)
+
+Open Cytoscape. *File -> Import -> Network from File*: test.ntwrk.txt
+
+*File -> Import -> Table from file*: test.ann.txt (n.b. *Import Data as: Node Table Columns*)
+
+
+
 ## Usage avoiding snakemake
 
 **Run gprofiler**
