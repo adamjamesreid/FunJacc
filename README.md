@@ -79,7 +79,7 @@ Open Cytoscape. *File -> Import -> Network from File*: test.ntwrk.txt
 
 Then select the FunJacc Cytoscape Style under the style templates
 
-
+![Cytoscape FunJacc visualisation](images/test.ntwrk.txt.png)
 
 ## Usage avoiding snakemake
 
