@@ -67,7 +67,7 @@ The MCL inflation parameter for determining clusters
 - ./funjacc_res/{string}.ntwrk.txtdata.mci.inf1.4.clusters.txt - MCL output file
 - ./funjacc_res/{string}.ntwrk.txt.data.tab - MCL output file
 
-## Old usage
+## Usage avoiding snakemake
 
 **Run gprofiler**
 
