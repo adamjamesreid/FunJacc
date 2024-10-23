@@ -55,6 +55,10 @@ The Jaccard index cut off for indentifying links between terms
 `inflation: 1.4`
 The MCL inflation parameter for determining clusters
 
+**Input**
+
+The input file should be in a directory called `input/` with the form `{string}.list`. It consists of a plain text file with one gene name per row. See `input/test.list` for an example.
+
 **Output**
 
 - ./gprofiler/{string}.gprofiler.out - Initial output from Gprofiler
