@@ -36,6 +36,10 @@ To run the test data:
 
 `snakemake funjacc_res/test.ann.txt`
 
+**Input**
+
+The input file should be in a directory called `input/` with the form `{string}.list`. It consists of a plain text file with one gene name per row. See `input/test.list` for an example.
+
 **Options**
 
 The way the code runs can be adjusted by editing the 'config.yaml' config file.
@@ -55,9 +59,6 @@ The Jaccard index cut off for indentifying links between terms
 `inflation: 1.4`
 The MCL inflation parameter for determining clusters
 
-**Input**
-
-The input file should be in a directory called `input/` with the form `{string}.list`. It consists of a plain text file with one gene name per row. See `input/test.list` for an example.
 
 **Output**
 
