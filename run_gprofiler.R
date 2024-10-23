@@ -17,6 +17,7 @@ gene_list <- read.csv(args[1], header=FALSE)
 output_file <- args[2]
 organism <- args[3]
 
+
 # Run gProfiler (evcodes =TRUE gives us the genes associated with each term)
 gprof_res <- gost(query = gene_list$V1,
                               organism = organism, evcodes = TRUE)
