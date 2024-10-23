@@ -1,3 +1,7 @@
+# AUTHOR: Adam James Reid
+# Copyright (C) 2024 University of Cambridge
+# This program is distributed under the terms of the GNU General Public License
+
 configfile: "config.yaml"
 
 rule run_gprofiler:

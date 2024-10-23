@@ -1,17 +1,9 @@
 # Given a set of GO terms results, determine the Jaccard index between the sets of e.g. DE genes associated with each term
 # output results so a network can be drawn and or representative terms could be picked.
 
-# To do
-## Include term type in annotation output - tick!
-## Generate more annotation for use in Cytoscpae network - tick!
-## Test GOMCL package - would this work OK? - not user friendly enough
-## Pick a name for tool - FunJacc!
-## Set up GitHub - tick!
-## Add unclustered orphan terms back in at the end - tick!
-## Generate the network image with clear cluster numbers/names
-## Run gProfiler itself??? gene list -> clustered terms
-## Implement mamba environment to capture dependencies
-## Excel output?
+# AUTHOR: Adam James Reid
+# Copyright (C) 2024 University of Cambridge
+# This program is distributed under the terms of the GNU General Public License
 
 import sys
 import subprocess
